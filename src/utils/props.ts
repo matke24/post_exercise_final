@@ -1,8 +1,24 @@
-export interface PostProps {
+export interface PostData {
   id: number;
   userId: number;
   title: string;
   body: string;
+}
+
+export interface PostsProps {
+  setPostData: React.Dispatch<React.SetStateAction<PostData[]>>;
+  setUserData: React.Dispatch<React.SetStateAction<UserMapProps>>;
+}
+
+export interface SearchBarProps {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface SearchViewProps {
+  searchText: string;
+  posts: PostData[];
+  users: UserMapProps;
 }
 
 export interface CardProps {

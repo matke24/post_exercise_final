@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar";
 import SearchView from "./components/SearchView";
 import { useState } from "react";
 import { usePostsApi, useUserApi } from "./hooks/hooks";
-import AllRoutes from "./components/AppRoutes";
+import AllRoutes from "./components/AllRoutes";
 
 function App() {
   const [searchText, setSearchText] = useState<string>("");

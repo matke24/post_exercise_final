@@ -1,4 +1,3 @@
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Posts from "./components/Posts";
 import PostView from "./components/PostView";
@@ -6,42 +5,43 @@ import Unknown from "./components/Unknown";
 import SearchBar from "./components/SearchBar";
 import SearchView from "./components/SearchView";
 import { useState } from "react";
-import { PostData, UserMapProps } from "./utils/props";
+import { usePostsApi, useUserApi } from "./hooks/hooks";
+import AllRoutes from "./components/AppRoutes";
 
 function App() {
-  const [postsData, setPostData] = useState<PostData[]>([]);
   const [searchText, setSearchText] = useState<string>("");
-  const [userData, setUserData] = useState<UserMapProps>({});
+  const posts = usePostsApi();
+  const users = useUserApi();
+
+  const routerData = [
+    {
+      path: "/",
+      element: <Posts users={users} posts={posts} />,
+    },
+    {
+      path: "/posts",
+      element: <Posts users={users} posts={posts} />,
+    },
+    {
+      path: "/posts/:id",
+      element: <PostView />,
+    },
+    {
+      path: "/search",
+      element: (
+        <SearchView searchText={searchText} posts={posts} users={users} />
+      ),
+    },
+    {
+      path: "/*",
+      element: <Unknown />,
+    },
+  ];
 
   return (
     <div>
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Posts setPostData={setPostData} setUserData={setUserData} />
-          }
-        />
-        <Route
-          path="/posts"
-          element={
-            <Posts setPostData={setPostData} setUserData={setUserData} />
-          }
-        />
-        <Route path="/posts/:id" element={<PostView />} />
-        <Route
-          path="/search"
-          element={
-            <SearchView
-              searchText={searchText}
-              posts={postsData}
-              users={userData}
-            />
-          }
-        />
-        <Route path="*" element={<Unknown />} />
-      </Routes>
+      <AllRoutes routerData={routerData} />
     </div>
   );
 }

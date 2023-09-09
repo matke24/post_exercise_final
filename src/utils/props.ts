@@ -5,11 +5,6 @@ export interface PostData {
   body: string;
 }
 
-export interface PostsProps {
-  setPostData: React.Dispatch<React.SetStateAction<PostData[]>>;
-  setUserData: React.Dispatch<React.SetStateAction<UserMapProps>>;
-}
-
 export interface SearchBarProps {
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
@@ -66,4 +61,13 @@ interface CompanyProps {
   name: string;
   catchPhrase: string;
   bs: string;
+}
+
+export interface RouterData {
+  path: string;
+  element: JSX.Element;
+}
+
+export interface AllRoutesData {
+  routerData: RouterData[];
 }

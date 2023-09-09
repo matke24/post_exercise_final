@@ -5,7 +5,7 @@ import Unknown from "./components/Unknown";
 import SearchBar from "./components/SearchBar";
 import SearchView from "./components/SearchView";
 import { useState } from "react";
-import { usePostsApi, useUserApi } from "./hooks/hooks";
+import { usePostsApi, useUserApi } from "./hooks/hooksApi";
 import AllRoutes from "./components/AllRoutes";
 
 function App() {

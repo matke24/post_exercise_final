@@ -5,6 +5,11 @@ export interface PostData {
   body: string;
 }
 
+export interface PostsProps {
+  posts: PostData[];
+  users: UserMapProps;
+}
+
 export interface SearchBarProps {
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
